@@ -111,7 +111,7 @@
             ><img src="../../assets/img/huyuefeng.jpg" alt="支付宝码"
           /></el-tab-pane>
           <el-tab-pane label="微信支付"
-            ><img src="../../assets/img/huyuefeng.png" alt="微信支付码"
+            ><img src="../../assets/img/huyuefeng.jpg" alt="微信支付码"
           /></el-tab-pane>
         </el-tabs>
         <!-- 底部按钮区 -->

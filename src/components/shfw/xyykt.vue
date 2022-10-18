@@ -13,16 +13,26 @@
         <el-row>
           <el-col :span="8">
             <el-form-item label="学号" prop="studentNumber">
-              <el-input v-model="searchForm.studentNumber" placeholder="请输入您的学号" clearable></el-input>
+              <el-input
+                v-model="searchForm.studentNumber"
+                placeholder="请输入您的学号"
+                clearable
+              ></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-form-item label="密码" prop="pass">
-              <el-input v-model="searchForm.pass" placeholder="请输入您的密码" clearable></el-input>
+              <el-input
+                v-model="searchForm.pass"
+                placeholder="请输入您的密码"
+                clearable
+              ></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-button type="primary" icon="el-icon-search" @click="search">查询</el-button>
+            <el-button type="primary" icon="el-icon-search" @click="search"
+              >查询</el-button
+            >
           </el-col>
         </el-row>
       </el-form>
@@ -56,7 +66,11 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="上次充值金额">
-                  <el-input v-model="resultForm.laseMoney" disabled show-password></el-input>
+                  <el-input
+                    v-model="resultForm.laseMoney"
+                    disabled
+                    show-password
+                  ></el-input>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -89,11 +103,20 @@
         </div>
       </el-form>
       <!-- 支付页面的对话框 -->
-      <el-dialog title="请您选择支付方式" :visible.sync="ChoosePaymentMethod" width="50%" @close="dialogClosed">
+      <el-dialog
+        title="请您选择支付方式"
+        :visible.sync="ChoosePaymentMethod"
+        width="50%"
+        @close="dialogClosed"
+      >
         <!-- 内容主体区 -->
         <el-tabs type="border-card">
-          <el-tab-pane label="支付宝支付"><img src="../../assets/img/zhifubao.jpg" alt="支付宝码"></el-tab-pane>
-          <el-tab-pane label="微信支付"><img src="../../assets/img/weixin.png" alt="微信支付码"></el-tab-pane>
+          <el-tab-pane label="支付宝支付"
+            ><img src="../../assets/img/huyuefeng.jpg" alt="支付宝码"
+          /></el-tab-pane>
+          <el-tab-pane label="微信支付"
+            ><img src="../../assets/img/huyuefeng.jpg" alt="微信支付码"
+          /></el-tab-pane>
         </el-tabs>
         <!-- 底部按钮区 -->
         <span slot="footer" class="dialog-footer">
@@ -111,7 +134,7 @@ export default {
       // 电费查询表单数据
       searchForm: {
         studentNumber: "",
-        pass: ""
+        pass: "",
       },
       // 默认要展开的折叠面板
       activeNames: ["1"],
@@ -123,12 +146,12 @@ export default {
         idNumber: "",
         balance: "",
         lastTime: "",
-        laseMoney: ""
+        laseMoney: "",
       },
       // 充值的金额
       money: "",
       // 控制选择支付方式对话框的显示与隐藏
-      ChoosePaymentMethod: false
+      ChoosePaymentMethod: false,
     };
   },
   methods: {
@@ -136,25 +159,23 @@ export default {
     search() {
       const data = this.searchForm;
       const that = this;
-      this.$http
-      .post("http://localhost/ykt/search",{data})
-      .then(res=>{
-        if(res.data.length ==='1'){
+      this.$http.post("http://localhost/ykt/search", { data }).then((res) => {
+        if (res.data.length === "1") {
           this.searchResult = true;
           console.log(res.data.length);
-          that.resultForm.name=res.data[0].name;
-          that.resultForm.idNumber=res.data[0].stu_number;
-          that.resultForm.balance=res.data[0].balance;
-          that.resultForm.lastTime=res.data[0].lastTime;
-          that.resultForm.laseMoney=res.data[0].lastMoney;
-        }else{
+          that.resultForm.name = res.data[0].name;
+          that.resultForm.idNumber = res.data[0].stu_number;
+          that.resultForm.balance = res.data[0].balance;
+          that.resultForm.lastTime = res.data[0].lastTime;
+          that.resultForm.laseMoney = res.data[0].lastMoney;
+        } else {
           this.$message({
             title: "警告",
             message: "账号或密码错误",
-            type: "warning"
+            type: "warning",
           });
         }
-      })
+      });
     },
     //  充值按钮
     recharge() {
@@ -162,26 +183,26 @@ export default {
         this.$message({
           title: "警告",
           message: "亲，请您先选择充值金额",
-          type: "warning"
+          type: "warning",
         });
       } else {
         this.ChoosePaymentMethod = true;
       }
     },
     // 取消充值按钮
-    cancel(){
-      this.money = '';
+    cancel() {
+      this.money = "";
     },
     // 取消支付对话框按钮
-    cancelDiolog(){
-      this.ChoosePaymentMethod  = false;
-      this.money = '';
+    cancelDiolog() {
+      this.ChoosePaymentMethod = false;
+      this.money = "";
     },
     // 监听支付对话框关闭事件
-    dialogClosed(){
-      this.money = '';
-    }
-  }
+    dialogClosed() {
+      this.money = "";
+    },
+  },
 };
 </script>
 
@@ -203,11 +224,11 @@ p {
 .submit .el-button {
   margin-left: 40px;
 }
-.el-tab-pane{
+.el-tab-pane {
   display: flex;
   justify-content: center;
 }
-.el-tab-pane img{
+.el-tab-pane img {
   width: 40%;
 }
 </style>

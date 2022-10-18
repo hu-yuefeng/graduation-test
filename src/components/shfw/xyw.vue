@@ -13,16 +13,26 @@
         <el-row>
           <el-col :span="8">
             <el-form-item label="学号" prop="studentNumber">
-              <el-input v-model="searchForm.studentNumber" placeholder="请输入您的学号" clearable></el-input>
+              <el-input
+                v-model="searchForm.studentNumber"
+                placeholder="请输入您的学号"
+                clearable
+              ></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-form-item label="密码" prop="pass">
-              <el-input v-model="searchForm.pass" placeholder="请输入您的密码" clearable></el-input>
+              <el-input
+                v-model="searchForm.pass"
+                placeholder="请输入您的密码"
+                clearable
+              ></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-button type="primary" icon="el-icon-search" @click="search">查询</el-button>
+            <el-button type="primary" icon="el-icon-search" @click="search"
+              >查询</el-button
+            >
           </el-col>
         </el-row>
       </el-form>
@@ -98,10 +108,10 @@
         <!-- 内容主体区 -->
         <el-tabs type="border-card">
           <el-tab-pane label="支付宝支付">
-            <img src="../../assets/img/zhifubao.jpg" alt="支付宝码" />
+            <img src="../../assets/img/huyuefeng.jpg" alt="支付宝码" />
           </el-tab-pane>
           <el-tab-pane label="微信支付">
-            <img src="../../assets/img/weixin.png" alt="微信支付码" />
+            <img src="../../assets/img/huyuefeng.jpg" alt="微信支付码" />
           </el-tab-pane>
         </el-tabs>
         <!-- 底部按钮区 -->
@@ -120,7 +130,7 @@ export default {
       // 校园网查询表单数据
       searchForm: {
         studentNumber: "",
-        pass: ""
+        pass: "",
       },
       // 默认要展开的折叠面板
       activeNames: ["1"],
@@ -132,12 +142,12 @@ export default {
         idNumber: "1601021001",
         balance: "8.5元",
         lastTime: "2019-12-2 8:20:15",
-        laseMoney: "20元"
+        laseMoney: "20元",
       },
       // 充值的金额
       money: "",
       // 控制选择支付方式对话框的显示与隐藏
-      ChoosePaymentMethod: false
+      ChoosePaymentMethod: false,
     };
   },
   methods: {
@@ -151,7 +161,7 @@ export default {
         this.$notify({
           title: "警告",
           message: "亲，请您先选择充值金额",
-          type: "warning"
+          type: "warning",
         });
       } else {
         this.ChoosePaymentMethod = true;
@@ -169,8 +179,8 @@ export default {
     // 监听支付对话框关闭事件
     dialogClosed() {
       this.money = "";
-    }
-  }
+    },
+  },
 };
 </script>
 
